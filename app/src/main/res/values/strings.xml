@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JewelTree</string>
+    <string name="welcome">Welcome to Renee McKenna\'s offering of the Jewel Tree Meditation</string>
+    <string name="jewel_tree_start_button">Play</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
