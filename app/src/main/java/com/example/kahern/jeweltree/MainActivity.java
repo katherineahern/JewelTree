@@ -8,40 +8,82 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.media.MediaPlayer;
-import android.media.AudioManager;
-import android.net.Uri;
-import android.os.Environment;
-import android.util.Log;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.content.Intent;
+import android.text.util.Linkify;
 
-import java.io.IOException;
 
 public class MainActivity extends Activity {
     public Button play;
-    public TextView test_button;
+    public Button pause;
+    public Button stop;
+    public Button website;
     public MediaPlayer mPlayer;
+    private double timeElapsed = 0, finalTime = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        test_button = (TextView)findViewById(R.id.test_button);
+        mPlayer = MediaPlayer.create(MainActivity.this, R.raw.jewel_tree_meditation);
+        finalTime = mPlayer.getDuration();
         play = (Button)findViewById(R.id.play_button);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                test_button.setText("pushed button");
-                mPlayer = MediaPlayer.create(MainActivity.this, R.raw.jewel_tree_meditation);
                 mPlayer.start();
-                Log.v("File context: ", Environment.getExternalStorageDirectory().getPath());
-                /*Uri introURI;
-                introURI = Uri.parse("android.resource://com.example.kahern.jeweltree/" + R.raw.JewelTreeMeditation);
-                MediaPlayer mediaPlayer = new MediaPlayer();
+                timeElapsed = mPlayer.getCurrentPosition();
+            }
+         });
 
-               MediaPlayer.create(this, Uri.parse(Environment.getExternalStorageDirectory().getPath()+ "/Music/intro.mp3"));
-                MediaPlayer.start();*/
+        mPlayer.setOnCompletionListener(new OnCompletionListener() {
+
+            public void onCompletion(MediaPlayer mp) {
+                //if mPlayer finished playing meditation
+                displayAcknowledgement();
             }
         });
+
+        pause = (Button)findViewById(R.id.pause_button);
+        pause.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if(mPlayer.isPlaying()) {
+                    mPlayer.pause();
+                }
+            }
+        });
+
+        stop = (Button)findViewById(R.id.stop_button);
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(mPlayer.isPlaying()) {
+                    mPlayer.pause();
+                    mPlayer.seekTo(0);
+                }
+
+
+            }
+
+
+
+        });
+
+        final TextView myClickableUrl = (TextView)findViewById(R.id.website);
+        Linkify.addLinks(myClickableUrl, Linkify.WEB_URLS);
+
+
+
+
     }
 
+    public void displayAcknowledgement() {
+        Intent intent = new Intent(this, DisplayAcknowledgement.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,5 +105,10 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mPlayer != null) mPlayer.release();
     }
 }

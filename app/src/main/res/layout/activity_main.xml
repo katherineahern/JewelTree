@@ -1,16 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
     android:paddingTop="10dp"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1.00"
+        android:src="@drawable/jewel_tree_earth" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/welcome"/>
+        android:text="@string/renee_description"
+        android:gravity="center"/>
 
 
         <Button
@@ -19,9 +26,26 @@
             android:layout_height="wrap_content"
             android:text="@string/jewel_tree_start_button"/>
 
-    <TextView
+    <Button
+        android:id="@+id/pause_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/test_button"/>
+        android:text="@string/jewel_tree_pause_button"/>
+    <Button
+        android:id="@+id/stop_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jewel_tree_stop_button"/>
+
+    <TextView
+        android:text="http://www.reneemckenna.com"
+        android:id="@+id/website"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:autoLink="web"
+        android:gravity="center">
+    </TextView>
+
+
 
 </LinearLayout>

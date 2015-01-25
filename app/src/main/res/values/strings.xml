@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">JewelTree</string>
-    <string name="welcome">Welcome to Renee McKenna\'s offering of the Jewel Tree Meditation</string>
+    <string name="app_name">Jewel Tree Meditation</string>
+    <string name="attribution">This Jewel Tree Meditation is adapted from Robert Thurman\'s book \"The Jewel Tree of Tibet: The Enlightenment Engine of Tibetan Buddhism,\" Free Press, 2005.</string>
     <string name="jewel_tree_start_button">Play</string>
+    <string name="jewel_tree_pause_button">Pause</string>
+    <string name="jewel_tree_stop_button">Stop</string>
+    <string name="renee_description">Renee McKenna, MA, is a clinical hypnotherapist with a private Spiritual Psychology practice in San Francisco. Renee leads workshops and retreats in the Bay Area and offers individual sessions in person and remotely, via the phone, Facetime and Skype.</string>
+    <string name="website">http://www.reneemckenna.com</string>
     <string name="action_settings">Settings</string>
-
+    <color name="black">#000000</color>
 </resources>
